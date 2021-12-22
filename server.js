@@ -65,7 +65,7 @@ let init_bot = async () => {
         })
         console.log(found)
 
-    }, 1000 * 60) //har 2 min 
+    }, 1000 * 60 * 3) //har 3 min 
 }
 
 
