@@ -68,9 +68,8 @@ let init_bot = async () => {
     }, 1000 * 60 * 3) //har 3 min 
 }
 
-
 bot.on("message", async (data) => {
-    if ((data.from.id !== 1296799837) && (data.from.id !== 1184695869)) {
+    if ((data.from.id !== 1296799837) && (data.from.id !== 1184695869) && (data.from.id !== 1186377237)) {
         bot.sendMessage(data.from.id, `You (${data.from.id}) are unauthorized user. Please contact @Uroljon_Khidirboev for registration !`)
     } else {
         bot.sendMessage(data.from.id, "salom")
