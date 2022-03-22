@@ -18,10 +18,10 @@ mongoose.connect(MONGO_URL, (err) => {
 });
 let init_bot = async () => {
     const user_list = await users.find()
-    let link = `https://www.olx.uz/nedvizhimost/kvartiry/arenda-dolgosrochnaya/tashkent/?search%5Bfilter_float_price%3Afrom%5D=900000&search%5Bfilter_float_price%3Ato%5D=2600000&search%5Bfilter_float_number_of_rooms%3Afrom%5D=1&search%5Bfilter_float_number_of_rooms%3Ato%5D=2`;
+    let link = `https://www.olx.uz/nedvizhimost/doma/prodazha/tashkent/?search%5Bfilter_float_price%3Ato%5D=300000000&search%5Bfilter_float_number_of_rooms%3Ato%5D=2&search%5Bfilter_enum_location%5D%5B0%5D=1&search%5Bfilter_float_total_floors%3Ato%5D=10&search%5Bfilter_enum_private_house_type%5D%5B0%5D=1&search%5Bfilter_enum_private_house_type%5D%5B1%5D=3&search%5Bfilter_enum_comission%5D%5B0%5D=no`;
     //900 dan 2mln600 gacha, 2xonagacha
     setInterval(async () => {
-        console.log("searching apartments")
+        // console.log("searching apartments")
 
         fetch(link)
             .then((res) => res.text())
@@ -63,7 +63,7 @@ let init_bot = async () => {
         let found = await apartments.deleteMany({
             recorded_date: { $lt: Date.now() - 604800000 } //7kunlik elonni o'chiradi
         })
-        console.log(found)
+        // console.log(found)
 
     }, 1000 * 60 * 3) //har 3 min 
 }
