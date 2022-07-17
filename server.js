@@ -18,8 +18,8 @@ mongoose.connect(MONGO_URL, (err) => {
 });
 let init_bot = async () => {
     const user_list = await users.find()
-    let link = `https://www.olx.uz/nedvizhimost/doma/prodazha/tashkent/?search%5Bfilter_float_price%3Ato%5D=300000000&search%5Bfilter_float_number_of_rooms%3Ato%5D=2&search%5Bfilter_enum_location%5D%5B0%5D=1&search%5Bfilter_float_total_floors%3Ato%5D=10&search%5Bfilter_enum_private_house_type%5D%5B0%5D=1&search%5Bfilter_enum_private_house_type%5D%5B1%5D=3&search%5Bfilter_enum_comission%5D%5B0%5D=no`;
-    //900 dan 2mln600 gacha, 2xonagacha
+    let link = `https://www.olx.uz/d/nedvizhimost/kvartiry/arenda-dolgosrochnaya/tashkent/?currency=UZS&search%5Bfilter_float_price:to%5D=3000000&search%5Bfilter_float_number_of_rooms:to%5D=4`;
+    //4xonagacha 300$ gacha
     setInterval(async () => {
         // console.log("searching apartments")
 
@@ -63,15 +63,13 @@ let init_bot = async () => {
         let found = await apartments.deleteMany({
             recorded_date: { $lt: Date.now() - 604800000 } //7kunlik elonni o'chiradi
         })
-        // console.log(found)
-
     }, 1000 * 60 * 3) //har 3 min refresh
 }
 
 bot.on("message", async (data) => {
-    if ((data.from.id !== 1296799837) && (data.from.id !== 1184695869) && (data.from.id !== 1186377237)) {
-        bot.sendMessage(data.from.id, `You (${data.from.id}) are unauthorized user. Please contact @Uroljon_Khidirboev for registration !`)
-    } else {
+    // if ((data.from.id !== 1296799837) && (data.from.id !== 1184695869) && (data.from.id !== 1186377237)) {
+    //     bot.sendMessage(data.from.id, `You (${data.from.id}) are unauthorized user. Please contact @Uroljon_Khidirboev for registration !`)
+    // } else {
         bot.sendMessage(data.from.id, "salom")
-    }
+    // }
 });
