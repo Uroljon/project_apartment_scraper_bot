@@ -21,8 +21,6 @@ let init_bot = async () => {
     let link = `https://www.olx.uz/d/nedvizhimost/kvartiry/arenda-dolgosrochnaya/tashkent/?currency=UZS&search%5Bfilter_float_price:to%5D=3000000&search%5Bfilter_float_number_of_rooms:to%5D=4`;
     //4xonagacha 300$ gacha
     setInterval(async () => {
-        // console.log("searching apartments")
-
         fetch(link)
             .then((res) => res.text())
             .then((body) => {
@@ -67,6 +65,11 @@ let init_bot = async () => {
 }
 
 bot.on("message", async (data) => {
+    for (let i = 0; i < users.length; i++) {
+        if (users.user_id !== data.from.id) {
+            await users.create({user_id: data.from.id})
+        }
+    }
     // if ((data.from.id !== 1296799837) && (data.from.id !== 1184695869) && (data.from.id !== 1186377237)) {
     //     bot.sendMessage(data.from.id, `You (${data.from.id}) are unauthorized user. Please contact @Uroljon_Khidirboev for registration !`)
     // } else {
